@@ -17,10 +17,10 @@ function StudentViewCommonHeader() {
      }
 
      return (
-          <header className="flex items-center justify-between p-2 border-b relative bg-amber-50">
+          <header className="flex items-center justify-between p-2 border-b relative bg-white ">
                <div className="flex items-center space-x-4">
                     <Link to="/home" className="flex items-center hover:text-black">
-                         <img src={logo} className='h-12 w-12 mr-2' alt='logo.png' />
+                         <img src={logo} className='h-12 w-14 mr-2' alt='logo.png' />
                          <span className="font-extrabold md:text-xl text-[14px]">
                               NextCode
                          </span>
@@ -38,7 +38,7 @@ function StudentViewCommonHeader() {
                                              ? null
                                              : navigate("/courses");
                                    }}
-                                   className="text-[14px] md:text-[16px] font-medium hover:text-blue-600 bg-amber-50"
+                                   className="text-[14px] md:text-[16px] font-medium hover:text-blue-600 bg-white"
                               >
                                    Explore Courses
                               </Button>
@@ -47,7 +47,7 @@ function StudentViewCommonHeader() {
                               <Button
                                    variant="ghost"
                                    onClick={() => navigate("/student-courses")}
-                                   className="text-[14px] md:text-[16px] font-medium hover:text-blue-600 bg-amber-50"
+                                   className="text-[14px] md:text-[16px] font-medium hover:text-blue-600 bg-white"
                               >
                                    My Courses
                               </Button>

@@ -25,7 +25,7 @@ function StudentCoursesPage() {
      }, []);
 
      return (
-          <div className="p-4">
+          <div className="p-4 min-h-screen">
                <h1 className="text-4xl w-full text-center font-bold mb-8">My Courses</h1>
                {studentBoughtCoursesList && studentBoughtCoursesList.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -40,7 +40,7 @@ function StudentCoursesPage() {
                                         />
                                         <h3 className="font-bold mb-1 pl-1">{course?.title.toUpperCase()}</h3>
                                         <p className="text-sm text-gray-700 mb-2 pl-1">
-                                             {course?.instructorName}
+                                             {course?.instructorName.substr(0,1).toUpperCase()}{course?.instructorName.substr(1)}
                                         </p>
                                    </CardContent>
                                    <CardFooter>

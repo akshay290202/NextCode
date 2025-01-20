@@ -22,7 +22,7 @@ export default function AuthProvider({ children }) {
           event.preventDefault();
           try {
                const data = await registerService(signUpFormData);
-               console.log(data);
+               // console.log(data);
 
                if (data.success) {
                     toast.success('Sign up successful !');

@@ -22,7 +22,7 @@ const AddNewCoursePage = () => {
      const { auth } = useContext(AuthContext);
      const navigate = useNavigate();
      const params = useParams();
-     console.log(params);
+     // console.log(params);
 
      function isEmpty(value) {
           if (Array.isArray(value)) {
@@ -84,7 +84,7 @@ const AddNewCoursePage = () => {
                setCurrentEditedCourseId(null);
           }
 
-          console.log(courseFinalFormData, "courseFinalFormData");
+          // console.log(courseFinalFormData, "courseFinalFormData");
      }
 
      async function fetchInstructorCourseDetails() {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import StudentViewCommonHeader from './header'
+import StudentViewCommonHeader from './header';
+import StudentViewCommonFooter from './footer';
 
 const StudentViewCommonLayout = () => {
      const location = useLocation();
@@ -13,6 +14,12 @@ const StudentViewCommonLayout = () => {
                }
 
                <Outlet />
+
+               {
+                    !location.pathname.includes("course-progress") ? (
+                         <StudentViewCommonFooter />
+                    ) : null
+               }
           </div>
      )
 }

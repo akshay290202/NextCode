@@ -23,7 +23,6 @@ const createOrder = async (req, res) => {
       coursePricing,
     } = req.body;
 
-    // console.log(process.env.CLEINT_URL);
 
     const create_payment_json = {
       intent: "sale",
