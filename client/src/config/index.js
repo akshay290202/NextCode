@@ -140,7 +140,7 @@ export const courseLandingPageFormControls = [
     label: "Objectives",
     componentType: "textarea",
     type: "text",
-    placeholder: "Enter course objectives",
+    placeholder: "Enter course objectives seperated by comma",
   },
   {
     name: "welcomeMessage",

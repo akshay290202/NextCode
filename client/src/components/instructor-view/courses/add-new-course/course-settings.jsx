@@ -41,7 +41,7 @@ const CourseSettings = () => {
           }
      }
 
-     console.log(courseLandingFormData);
+     // console.log(courseLandingFormData);
 
      return (
           <Card>

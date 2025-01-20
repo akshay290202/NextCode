@@ -9,6 +9,8 @@ import {
 } from "@/services";
 import { AuthContext } from "@/context/auth-context";
 import { useNavigate } from "react-router-dom";
+import Carousel from "@/components/common-form/carousel";
+import StudentViewCommonFooter from "@/components/student-view/footer";
 
 function StudentHomePage() {
      const { studentViewCoursesList, setStudentViewCoursesList } =
@@ -28,6 +30,8 @@ function StudentHomePage() {
           navigate("/courses");
      }
 
+     // console.log(studentViewCoursesList);
+     
      async function fetchAllStudentViewCourses() {
           const response = await fetchStudentViewCourseListService();
           if (response?.success) setStudentViewCoursesList(response?.data);
@@ -57,24 +61,27 @@ function StudentHomePage() {
           <div className="min-h-screen bg-white">
                <section className="flex flex-col lg:flex-row items-center justify-between py-8 px-4 lg:px-8">
                     <div className="lg:w-1/2 lg:pr-12 p-2">
-                         <h1 className="text-4xl font-bold mb-4">NextCode - Learning that gets you moving!</h1>
+                         <h1 className="text-4xl font-bold mb-4">NextCode - Learning that gets you moving !</h1>
                          <p className="text-l">
                               Unlock your career potential with our expert-led courses designed to help you ace placement
                               interviews and master coding. Whether you're an aspiring software
                               developer or preparing for your dream job, our comprehensive training programs provide the
                               skills and confidence you need to succeed.
                          </p>
+                         <p></p>
                          <p className="mt-1">
                               Join us and take the first step towards securing your future in software development.
                          </p>
                     </div>
                     <div className="lg:w-full mb-8 lg:mb-0">
-                         <img
+                         
+                         <Carousel/>
+                         {/* <img
                               src={banner}
                               width={600}
                               height={300}
                               className="w-full h-auto rounded-lg shadow-lg"
-                         />
+                         /> */}
                     </div>
                </section>
                <section className="py-8 px-4 lg:px-8 bg-gray-100">
@@ -107,14 +114,14 @@ function StudentHomePage() {
                                              height={150}
                                              className="w-full h-40 object-cover"
                                         />
-                                        <div className="p-4 bg-amber-50">
+                                        <div className="p-4">
                                              <h3 className="font-bold mb-1 text-lg">{courseItem?.title}</h3>
                                              <p className="text-sm text-gray-700 font-semibold font-sans">
-                                                  {courseItem?.instructorName}
+                                                  {courseItem?.instructorName.substr(0,1).toUpperCase()}{courseItem?.instructorName.substr(1)}
                                              </p>
                                         </div>
-                                        <div className="font-semibold text-white text-[16px] p-2 font-sans text-lg text-center rounded-md bg-blue-600 hover:bg-blue-700 ">
-                                             ₹ {courseItem?.pricing}
+                                        <div className="font-semibold text-white text-[16px] p-2 font-sans text-lg text-center rounded-md bg-blue-700 hover:bg-blue-800 ">
+                                             $ {courseItem?.pricing}
                                         </div>
                                    </div>
                               ))

@@ -7,6 +7,8 @@ import { signInFromControls, signUpFromControls } from '@/config'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useContext } from 'react'
 import { AuthContext } from '@/context/auth-context'
+import StudentViewCommonHeader from '@/components/student-view/header'
+import StudentViewCommonFooter from '@/components/student-view/footer'
 
 const AuthPage = () => {
     const [activeTab, setActiveTab] = useState('signin');
@@ -32,12 +34,7 @@ const AuthPage = () => {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <header className='px-4 lg:px-6 h-14 flex items-center border-b bg-amber-50'>
-                <Link to={'/'} className='flex items-center justify-center'>
-                    <img src={logo} className='h-12 w-12 mr-2' alt='logo.png' />
-                    <span className='font-extrabold text-xl'>NextCode</span>
-                </Link>
-            </header>
+            <StudentViewCommonHeader/>
             <div className="flex items-center justify-center min-h-screen bg-background">
                 <Tabs value={activeTab} defaultValue="signin" onValueChange={handleTabChange} className='w-full max-w-md'>
                     <TabsList className='grid w-full grid-cols-2'>
@@ -90,6 +87,7 @@ const AuthPage = () => {
                     </TabsContent>
                 </Tabs>
             </div>
+            <StudentViewCommonFooter/>
         </div>
     )
 }

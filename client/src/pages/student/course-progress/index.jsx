@@ -117,7 +117,7 @@ function StudentViewCourseProgressPage() {
           if (showConfetti) setTimeout(() => setShowConfetti(false), 15000);
      }, [showConfetti]);
 
-     console.log(currentLecture, "currentLecture");
+     // console.log(currentLecture, "currentLecture");
 
      return (
           <div className="flex flex-col h-screen bg-[#1c1d1f] text-white">
@@ -137,7 +137,7 @@ function StudentViewCourseProgressPage() {
                               {studentCurrentCourseProgress?.courseDetails?.title}
                          </div>
                     </div>
-                    <Button onClick={() => setIsSideBarOpen(!isSideBarOpen)} className='bg-blue-800 hover:bg-blue-900'>
+                    <Button onClick={() => setIsSideBarOpen(!isSideBarOpen)} className='bg-white text-black hover:bg-gray-200'>
                          {isSideBarOpen ? (
                               <ChevronRight className="h-5 w-5" />
                          ) : (
@@ -162,7 +162,7 @@ function StudentViewCourseProgressPage() {
                          </div>
                     </div>
                     <div
-                         className={`fixed top-[68px] right-0 bottom-0 w-[400px] bg-blue-950 border-l border-gray-700 transition-all duration-300 ${isSideBarOpen ? "translate-x-0" : "translate-x-full"
+                         className={`fixed top-[68px] right-0 bottom-0 w-[400px] bg-gray-800 border-l border-gray-700 transition-all duration-300 ${isSideBarOpen ? "translate-x-0" : "translate-x-full"
                               }`}
                     >
                          <Tabs defaultValue="content" className="h-full flex flex-col">

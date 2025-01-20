@@ -64,7 +64,7 @@ function StudentViewCourseDetailsPage() {
      }
 
      function handleSetFreePreview(getCurrentVideoInfo) {
-          console.log(getCurrentVideoInfo);
+          // console.log(getCurrentVideoInfo);
           setDisplayCurrentVideoFreePreview(getCurrentVideoInfo?.videoUrl);
      }
 
@@ -141,14 +141,14 @@ function StudentViewCourseDetailsPage() {
                     </h1>
                     <p className="text-xl mb-4">{studentViewCourseDetails?.subtitle}</p>
                     <div className="flex items-center space-x-4 mt-2 text-sm">
-                         <span>Created by : {studentViewCourseDetails?.instructorName}</span>
+                         <span>Created by : {studentViewCourseDetails?.instructorName.substr(0,1).toUpperCase()}{studentViewCourseDetails?.instructorName.substr(1)}</span>
                          <span>Last modified : {studentViewCourseDetails?.date.split("T")[0]}</span>
 
                     </div>
                     <div className="flex items-center space-x-4 mt-2 text-sm">
                          <span className="flex items-center">
                               Language :{' '}
-                              {studentViewCourseDetails?.primaryLanguage}
+                              {studentViewCourseDetails?.primaryLanguage.substr(0,1).toUpperCase()}{studentViewCourseDetails?.primaryLanguage.substr(1)}
                          </span>
                          <span>
                               Students Enrolled :{' '}
@@ -167,10 +167,11 @@ function StudentViewCourseDetailsPage() {
                                         {studentViewCourseDetails?.objectives
                                              .split(",")
                                              .map((objective, index) => (
+                                                  objective.trim().length > 0 ?
                                                   <li key={index} className="flex items-start">
                                                        <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
-                                                       <span>{objective}</span>
-                                                  </li>
+                                                       <span className="mt-0">{objective}</span>
+                                                  </li> : null
                                              ))}
                                    </ul>
                               </CardContent>
@@ -232,7 +233,7 @@ function StudentViewCourseDetailsPage() {
                                              {studentViewCourseDetails?.title} (Free Preview)
                                         </div>
                                         <span className="text-2xl font-bold">
-                                             ₹ {studentViewCourseDetails?.pricing}
+                                             $ {studentViewCourseDetails?.pricing}
                                         </span>
                                    </div>
                                    <Button className="w-full bg-blue-800 hover:bg-blue-900"

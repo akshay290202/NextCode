@@ -50,14 +50,14 @@ function StudentViewCoursesPage() {
           const indexOfCurrentSeection =
                Object.keys(cpyFilters).indexOf(getSectionId);
 
-          console.log(indexOfCurrentSeection, getSectionId);
+          // console.log(indexOfCurrentSeection, getSectionId);
           if (indexOfCurrentSeection === -1) {
                cpyFilters = {
                     ...cpyFilters,
                     [getSectionId]: [getCurrentOption.id],
                };
 
-               console.log(cpyFilters);
+               // console.log(cpyFilters);
           } else {
                const indexOfCurrentOption = cpyFilters[getSectionId].indexOf(
                     getCurrentOption.id
@@ -68,6 +68,8 @@ function StudentViewCoursesPage() {
                else cpyFilters[getSectionId].splice(indexOfCurrentOption, 1);
           }
 
+          // console.log(cpyFilters);
+          
           setFilters(cpyFilters);
           sessionStorage.setItem("filters", JSON.stringify(cpyFilters));
      }
@@ -77,11 +79,18 @@ function StudentViewCoursesPage() {
                ...filters,
                sortBy: sort,
           });
+          // console.log(query);
+          
           const response = await fetchStudentViewCourseListService(query);
+          // console.log(response);
+          
           if (response?.success) {
                setStudentViewCoursesList(response?.data);
                setLoadingState(false);
           }
+
+          // console.log('last',filters);
+          
      }
 
      async function handleCourseNavigate(getCurrentCourseId) {
@@ -90,7 +99,7 @@ function StudentViewCoursesPage() {
                auth?.user?._id
           );
 
-          console.log(response, 'handleCourseNavigate');
+          // console.log(response, 'handleCourseNavigate');
 
           if (response?.success) {
                if (response?.data) {
@@ -102,34 +111,34 @@ function StudentViewCoursesPage() {
      }
 
      useEffect(() => {
-          const buildQueryStringForFilters = createSearchParamsHelper(filters);
-          setSearchParams(new URLSearchParams(buildQueryStringForFilters));
-     }, [filters]);
-
-     useEffect(() => {
           setSort("price-lowtohigh");
           setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
      }, []);
 
      useEffect(() => {
-          if (filters !== null && sort !== null)
-               fetchAllStudentViewCourses(filters, sort);
-     }, [filters, sort]);
+          // console.log(filters);
+          const buildQueryStringForFilters = createSearchParamsHelper(filters);
+          setSearchParams(new URLSearchParams(buildQueryStringForFilters));
+          // console.log('4');
+     }, [filters]);
+
 
      useEffect(() => {
-          return () => {
-               sessionStorage.removeItem("filters");
-          };
-     }, []);
+          // console.log('last',filters);
+          if (filters?.category){
+               // console.log('last',filters);
+               fetchAllStudentViewCourses(filters, sort);
+          }
+     }, [filters, sort]);
 
-     // console.log(loadingState, "loadingState");
+     
 
      return (
-          <div className="container mx-auto p-4">
+          <div className="container p-2 mx-auto">
                {/* <h5 className="text-3xl font-semibold mb-4">Filter By :</h5> */}
 
-               <div className="flex flex-col md:flex-row gap-4 bg-gray-50">
-                    <aside className="w-full md:w-64 space-y-4 rounded-sm">
+               <div className="flex flex-col md:flex-row gap-4 ">
+                    <aside className="w-full md:w-64 space-y-4 rounded-sm p-2">
 
                          <div>
                               <div className="pr-4 pl-4 font-semibold pt-1">Filter Courses By :</div>
@@ -214,7 +223,7 @@ function StudentViewCoursesPage() {
                                                        <p className="text-sm text-gray-600 mb-1">
                                                             Instructor{" : "}
                                                             <span className="font-semibold">
-                                                                 {courseItem?.instructorName}
+                                                            {courseItem?.instructorName.substr(0,1).toUpperCase()}{courseItem?.instructorName.substr(1)}
                                                             </span>
                                                        </p>
                                                        <p className="text-sm text-gray-600 mb-1">
@@ -231,7 +240,7 @@ function StudentViewCoursesPage() {
                                                             </span>
                                                        </p>
                                                        <p className="font-bold text-lg">
-                                                            ₹ {courseItem?.pricing}
+                                                            $ {courseItem?.pricing}
                                                        </p>
                                                   </div>
                                              </CardContent>

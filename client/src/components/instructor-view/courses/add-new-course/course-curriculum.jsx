@@ -52,7 +52,7 @@ const CourseCurriculum = () => {
      }
 
      async function handleSingleLectureUpload(event, currentIndex) {
-          console.log(event.target.files[0]);
+          // console.log(event.target.files[0]);
           const selectedFile = event.target.files[0];
 
           if (selectedFile) {
@@ -142,7 +142,7 @@ const CourseCurriculum = () => {
                     setMediaUploadProgressPercentage
                );
 
-               console.log(response, "bulk");
+               // console.log(response, "bulk");
                if (response?.success) {
                     let cpyCourseCurriculumFormdata =
                          areAllCourseCurriculumFormDataObjectsEmpty(courseCurriculumFormData)
