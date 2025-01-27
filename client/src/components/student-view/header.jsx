@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 function StudentViewCommonHeader() {
      const navigate = useNavigate();
-     const { resetCredentials } = useContext(AuthContext);
+     const { resetCredentials , auth} = useContext(AuthContext);
 
      function handleLogout() {
           resetCredentials();
@@ -30,6 +30,8 @@ function StudentViewCommonHeader() {
 
                <div className="flex items-center space-x-4">
                     <div className="flex gap-4 items-center">
+                         { auth.authenticate === true ? 
+                              <>
                          <div className="flex items-center space-x-1">
                               <Button
                                    variant="ghost"
@@ -52,6 +54,8 @@ function StudentViewCommonHeader() {
                                    My Courses
                               </Button>
                          </div>
+                              </> : null
+                         }
                          {/* <div
                               onClick={() => navigate("/student-courses")}
                               className="flex cursor-pointer items-center gap-3"
